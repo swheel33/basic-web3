@@ -23,10 +23,10 @@ export const DaiTransactions = () => {
     })
 
     useEffect(() => {
-        const getNextPage = async () => {
-            if(document.body.clientHeight - height === scroll.y) {
+        const getNextPage = () => {
+            if(document.body.clientHeight - height >= scroll.y - 25) {
                 setLoading(true)
-                await fetchNextPage()
+                fetchNextPage()
             }
         }
         getNextPage()

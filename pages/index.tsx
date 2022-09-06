@@ -1,10 +1,9 @@
 import type { NextPage } from 'next'
+import { App } from '../components/App'
 
 const Home: NextPage = () => {
   return (
-    <div>
-      <p>Hi</p>
-    </div>
+    <App />
   )
 }
 

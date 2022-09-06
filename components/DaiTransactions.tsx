@@ -18,13 +18,13 @@ export const DaiTransactions = () => {
     const { height } = useViewportSize()
     const [loading, setLoading] = useState(false)
 
-    const { data: fetchData, fetchNextPage, hasNextPage } = useInfiniteQuery(['transactions'], getTransactions, {
+    const { data: fetchData, fetchNextPage, isFetchingNextPage} = useInfiniteQuery(['transactions'], getTransactions, {
         getNextPageParam: lastPage => (lastPage?.page ?? 0) + 1
     })
 
     useEffect(() => {
         const getNextPage = () => {
-            if(document.body.clientHeight - height - scroll.y <= 25) {
+            if(document.body.clientHeight - height - scroll.y <= 25 && !isFetchingNextPage) {
                 setLoading(true)
                 fetchNextPage()
             }

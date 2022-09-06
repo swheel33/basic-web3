@@ -23,10 +23,11 @@ export const DaiTransactions = () => {
     })
 
     useEffect(() => {
-        const getNextPage = () => {
+        const getNextPage = async () => {
             if(document.body.clientHeight - height - scroll.y <= 25 && !isFetchingNextPage) {
                 setLoading(true)
-                fetchNextPage()
+                await fetchNextPage()
+                setLoading(false)
             }
         }
         getNextPage()
@@ -52,7 +53,7 @@ export const DaiTransactions = () => {
             <td><Anchor target='_blank' href={`https://etherscan.io/address/${value.from}`}>{truncateBytes(value.from)}</Anchor></td>
         </tr>
     ))
-    
+    console.log(loading)
 
     return (
             <Container mb='25px' size='md'>

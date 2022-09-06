@@ -23,11 +23,8 @@ export const DaiTransactions = () => {
     })
 
     useEffect(() => {
-        console.log(`doc height ${document.body.clientHeight}`)
-        console.log(`view height ${height}`)
-        console.log(`scroll ${scroll.y}`)
         const getNextPage = () => {
-            if(document.body.clientHeight - height >= scroll.y - 25) {
+            if(document.body.clientHeight - height - scroll.y <= 25) {
                 setLoading(true)
                 fetchNextPage()
             }
